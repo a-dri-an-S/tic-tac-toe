@@ -5,7 +5,7 @@ class TicTacToe {
     };
 
     changePlayer = () => {
-        this.currentPlayer = this.currentPlayer === "X" ? "0" : "X"
+        this.currentPlayer = this.currentPlayer === "X" ? "O" : "X"
     }
 
     validateMoveIsOnGameBoard = (row, col) => {
@@ -21,11 +21,16 @@ class TicTacToe {
 
     calculateWin = () => {
         // calculate horizontal
-        if (this.board[0][0].includes('X') && this.board[0][1].includes('X') && this.board[0][2].includes('X')){
-            console.log(`${this.currentPlayer} is the winner!`)
-            this.board = new Array(3).fill("").map(row => new Array(3).fill(""));
-            console.log(this.board)
-        }; 
+        for(let i = 0; i < this.board.length; i++){
+            if (this.board[i].join("") === 'XXX'){
+                console.log(`${this.currentPlayer} is the winner!`)
+                this.board = new Array(3).fill("").map(row => new Array(3).fill(""));
+            } else if(this.board[i].join("") === 'OOO'){
+                console.log(`${this.currentPlayer} is the winner!`)
+                this.board = new Array(3).fill("").map(row => new Array(3).fill(""));
+            }
+        }
+
 
         // calculate vertical
         // calculate diagonal
@@ -33,7 +38,9 @@ class TicTacToe {
 
     gameBoardIsFull = () => {
         if(!this.board[0].includes("") && !this.board[1].includes("") && !this.board[2].includes("")){
-            throw new Error("The game board is full and there are no winners")
+            // throw new Error("The game board is full and there are no winners")
+            console.log("This game board is full and there are NO WINNERS!")
+            this.board = new Array(3).fill("").map(row => new Array(3).fill(""));
         }
     }
 
@@ -47,17 +54,15 @@ class TicTacToe {
         // mutate the gameBoard
         this.board[row][col] = this.currentPlayer;
 
-        // validate game board is full
-        this.gameBoardIsFull();
-
         // calculate the win
         this.calculateWin();
+
+        // validate game board is full
+        this.gameBoardIsFull();
 
         // change player
         this.changePlayer();
 
-
-        
     }
 
 };
@@ -79,8 +84,8 @@ salVersusAdrian.move(0,0);
 salVersusAdrian.move(1,0);
 salVersusAdrian.move(0,1);
 salVersusAdrian.move(1,1);
-salVersusAdrian.move(0,2);
-
+salVersusAdrian.move(2,2);
+salVersusAdrian.move(1,2);
 
 
 console.log(salVersusAdrian.board);
