@@ -25,15 +25,27 @@ class TicTacToe {
             if (this.board[i].join("") === 'XXX'){
                 console.log(`${this.currentPlayer} is the winner!`)
                 this.board = new Array(3).fill("").map(row => new Array(3).fill(""));
-            } else if(this.board[i].join("") === 'OOO'){
+            } else if (this.board[i].join("") === 'OOO'){
+                console.log(`${this.currentPlayer} is the winner!`)
+                this.board = new Array(3).fill("").map(row => new Array(3).fill(""));
+        // calculate vertical
+            } else if ((this.board[0][i] && this.board[1][i] && this.board[2][i]) === 'X'){
+                console.log(`${this.currentPlayer} is the winner!`)
+                this.board = new Array(3).fill("").map(row => new Array(3).fill(""));
+            } else if ((this.board[0][i] && this.board[1][i] && this.board[2][i]) === 'O'){
+                console.log(`${this.currentPlayer} is the winner!`)
+                this.board = new Array(3).fill("").map(row => new Array(3).fill(""));
+        // calculate diagonal
+            } else if ((this.board[0][0] && this.board[1][1] && this.board[2][2]) || 
+                (this.board[2][0] && this.board[1][1] && this.board[0][2]) === 'X'){
+                console.log(`${this.currentPlayer} is the winner!`)
+                this.board = new Array(3).fill("").map(row => new Array(3).fill(""));
+            } else if ((this.board[0][0] && this.board[1][1] && this.board[2][2]) || 
+            (this.board[2][0] && this.board[1][1] && this.board[0][2]) === 'O'){
                 console.log(`${this.currentPlayer} is the winner!`)
                 this.board = new Array(3).fill("").map(row => new Array(3).fill(""));
             }
         }
-
-
-        // calculate vertical
-        // calculate diagonal
     }
 
     gameBoardIsFull = () => {
@@ -69,6 +81,12 @@ class TicTacToe {
 
 const salVersusAdrian = new TicTacToe();
 
+salVersusAdrian.move(0,2);
+salVersusAdrian.move(0,1);
+salVersusAdrian.move(1,2);
+salVersusAdrian.move(1,1);
+salVersusAdrian.move(2,2);
+salVersusAdrian.move(2,1);
 
 // salVersusAdrian.move(0,0);
 // salVersusAdrian.move(0,1);
@@ -80,12 +98,12 @@ const salVersusAdrian = new TicTacToe();
 // salVersusAdrian.move(2,1);
 // salVersusAdrian.move(2,2);
 
-salVersusAdrian.move(0,0);
-salVersusAdrian.move(1,0);
-salVersusAdrian.move(0,1);
-salVersusAdrian.move(1,1);
-salVersusAdrian.move(2,2);
-salVersusAdrian.move(1,2);
+// salVersusAdrian.move(0,0);
+// salVersusAdrian.move(1,0);
+// salVersusAdrian.move(0,1);
+// salVersusAdrian.move(1,1);
+// salVersusAdrian.move(2,2);
+// salVersusAdrian.move(1,2);
 
 
 console.log(salVersusAdrian.board);
